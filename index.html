@@ -7,6 +7,7 @@
     <title>Taipei Tourism</title>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="./vue.config.js"></script> -->
     <link rel="stylesheet" href="./scss/style.css">
 </head>
 <body>
@@ -28,45 +29,46 @@
             }
         },
         methods:{
-            // getData2(){
-            //     this.load= true
-            //     fetch(`/travelapi/zh-tw/Attractions/All?page=${this.page}`, {
-            //         method: 'GET',
-            //         headers: {
-            //             "accept": "application/json"
-            //         }
-            //     })
-            //     .then(response => response.json())
-            //     .then(result => {
-            //         this.travelData = result
-            //         this.load= false
-            //     })
-            //     .catch(error => console.log('error', error));
-            // },
-            getData3(){
+            getData2(){
                 this.load= true
-                this.axios.get('https://www.travel.taipei/open-api/zh-tw/Attractions/All', {
+                fetch(`https://www.travel.taipei/open-api/zh-tw/Attractions/All?page=${this.page}`, {
+                    method: 'GET',
                     headers: {
-                        "accept": "application/json"
-                    },
-                    params: {
-                        page: this.page
+                        "Content-Type": "application/json"
                     }
                 })
-                .then((response) => {
-                    this.travelData = response.data
+                .then(response => response.json())
+                .then(result => {
+                    this.travelData = result
+                    this.load= false
+                    console.log(result);
                 })
-                .catch((error) => {
-                    console.log(error);
-                })
-                .finally(() =>{
-                    this.load = false
-                })
+                .catch(error => console.log('error', error));
             },
+            // getData3(){
+            //     this.load= true
+            //     this.axios.get(`https://api.kcg.gov.tw/api/service/Get/9c8e1450-e833-499c-8320-29b36b7ace5c`, {
+            //         headers: {
+            //             "accept": "application/json"
+            //         },
+            //         params: {
+            //             page: this.page
+            //         }
+            //     })
+            //     .then((response) => {
+            //         this.travelData = response.data
+            //     })
+            //     .catch((error) => {
+            //         console.log(error);
+            //     })
+            //     .finally(() =>{
+            //         this.load = false
+            //     })
+            // },
             nexPage(){
                 this.page += 1
-                // this.getData2()
-                this.getData3() 
+                this.getData2()
+                // this.getData3() 
             }
         },
         mounted(){
