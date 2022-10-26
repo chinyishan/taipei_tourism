@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+$primary: #30c39e;
+$txt: #ffff;
+
+%transition {
+    transition: all .3s ease;
+}
+
+.btn {
+    padding: 10px 20px;
+    background: $primary;
+    color: $txt;
+    border: 0;
+    @extend %transition;
+    &:hover {
+        background: darken($primary, 5%);
+    }
+    &:active {
+        background: darken($primary, 10%);
+    }
+}

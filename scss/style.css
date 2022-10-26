@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #30c39e;
+  color: white;
+  border: 0;
+}
+.btn:hover {
+  background: #2baf8d;
+}
+.btn:active {
+  background: #269a7d;
+}/*# sourceMappingURL=style.css.map */
